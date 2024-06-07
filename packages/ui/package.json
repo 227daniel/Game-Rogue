@@ -42,6 +42,7 @@
     "@nextui-org/autocomplete": "^2.0.14",
     "@nextui-org/avatar": "^2.0.25",
     "@nextui-org/button": "^2.0.27",
+    "@nextui-org/date-picker": "^2.1.1",
     "@nextui-org/input": "^2.1.19",
     "@nextui-org/link": "^2.0.29",
     "@nextui-org/navbar": "^2.0.30",

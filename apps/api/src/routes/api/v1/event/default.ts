@@ -1,27 +1,31 @@
+import eventModel from '@/models/event';
 import {
   createEvent,
   deleteEventById,
-  EventStatus,
   getAllEvents,
   getAllEventsByStatus,
+  getAllEventsGroupedByStatus,
+  getAllOrganizationEventsGroupedByStatus,
   getEventById,
   getEventByOrganizationId,
   updateEventById,
 } from '@/services/event';
 import { removeFromGoogleStorage } from '@/utils/storage';
 import { log } from '@repo/logger';
-import { TApiResponse, TEvent, ZEvent, ZEventUpdate } from '@repo/types';
+import { TApiResponse, TEvent, ZEvent, ZEventUpdate, ZEventUpdateTeam } from '@repo/types';
 import type { Request, Response, Express } from 'express';
+import { isValidObjectId } from 'mongoose';
 import path from 'path';
 
 export const getEventByIdController = async (req: Request, res: Response) => {
-  const eventId = req.params.id;
-  const event = await getEventById(eventId);
+  const id = req.params.id;
+  if (!id || !isValidObjectId(id)) throw new Error('Invalid Request');
+  const event = await getEventById(id);
   return res.json({
     data: event,
     success: true,
     message: 'success',
-  } as TApiResponse<TEvent>);
+  });
 };
 
 export const getEventByOrganizationIdController = async (req: Request, res: Response) => {
@@ -31,7 +35,7 @@ export const getEventByOrganizationIdController = async (req: Request, res: Resp
     data: events,
     success: true,
     message: 'success',
-  } as TApiResponse<TEvent[]>);
+  });
 };
 
 export const createEventController = async (req: Request, res: Response) => {
@@ -79,10 +83,6 @@ export const createEventController = async (req: Request, res: Response) => {
     req.body.team_limit = parseInt(req.body?.team_limit ?? '0');
     req.body.entry_fee = parseInt(req.body?.entry_fee ?? '0');
     req.body.prize_pool = parseInt(req.body?.prize_pool ?? '0');
-    req.body.start_date = new Date(req.body?.start_date ?? Date.now());
-    req.body.end_date = new Date(req.body?.end_date ?? Date.now());
-    req.body.registration_opens_date = new Date(req.body?.registration_opens_date ?? Date.now());
-    req.body.registration_ends_date = new Date(req.body?.registration_ends_date ?? Date.now());
     const payload = ZEvent.safeParse(req.body);
     if (payload.success === true) {
       const event = await createEvent(payload.data);
@@ -176,18 +176,6 @@ export const updateEventByIdController = async (req: Request, res: Response) => 
     if (req.body?.prize_pool) {
       req.body.prize_pool = parseInt(req.body?.prize_pool ?? '0');
     }
-    if (req.body?.start_date) {
-      req.body.start_date = new Date(req.body?.start_date ?? Date.now());
-    }
-    if (req.body?.end_date) {
-      req.body.end_date = new Date(req.body?.end_date ?? Date.now());
-    }
-    if (req.body?.registration_opens_date) {
-      req.body.registration_opens_date = new Date(req.body?.registration_opens_date ?? Date.now());
-    }
-    if (req.body?.registration_ends_date) {
-      req.body.registration_ends_date = new Date(req.body?.registration_ends_date ?? Date.now());
-    }
 
     const payload = ZEventUpdate.safeParse(req.body);
     if (payload.success === true) {
@@ -246,15 +234,85 @@ export const getAllEventsController = async (req: Request, res: Response) => {
     data: events,
     success: true,
     message: 'success',
-  } as TApiResponse<TEvent[]>);
+  });
 };
 
 export const getAllEventsByStatusController = async (req: Request, res: Response) => {
-  const status = req.query.status as EventStatus;
+  const status = req.query.status as TEvent['status'];
   const events = await getAllEventsByStatus(status);
   return res.json({
     data: events,
     success: true,
     message: 'success',
-  } as TApiResponse<TEvent[]>);
+  });
+};
+export const getAllEventsGroupedByStatusController = async (req: Request, res: Response) => {
+  const events = (await getAllEventsGroupedByStatus()) as unknown as {
+    events: TEvent[];
+    status: string;
+  }[];
+  return res.json({
+    data: events,
+    success: true,
+    message: 'success',
+  } as TApiResponse<{ events: TEvent[]; status: string }[]>);
+};
+export const getAllOrganizationEventsGroupedByStatusController = async (
+  req: Request,
+  res: Response
+) => {
+  const id = req.params.id as string;
+  const events = (await getAllOrganizationEventsGroupedByStatus(id)) as unknown as {
+    events: TEvent[];
+    status: string;
+  }[];
+  return res.json({
+    data: events,
+    success: true,
+    message: 'success',
+  });
+};
+
+export const updateEventTeam = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const item = await eventModel.findById(id).populate('teams');
+  if (!item)
+    return res.status(404).json({
+      success: false,
+      message: 'not found',
+    });
+  const payload = ZEventUpdateTeam.safeParse(req.body);
+  if (payload.success) {
+    const { teamId, remove } = payload.data;
+    const teamdIds = item.teamIds;
+    const idx = teamdIds.findIndex((item) => item.teamId === teamId);
+    if (remove) {
+      await item.updateOne(
+        {
+          teamdIds: teamdIds.filter((item) => item.teamId !== teamId),
+        },
+        { new: true, upsert: true }
+      );
+    } else {
+      if (idx < 0) {
+        await item.updateOne(
+          { $addToSet: { teamdIds: payload.data } },
+          { new: true, upsert: true }
+        );
+      } else {
+        teamdIds[idx] = { ...teamdIds[idx], ...payload.data };
+        await item.updateOne({ teamdIds }, { new: true, upsert: true });
+      }
+    }
+    return res.json({
+      success: true,
+      message: 'success',
+      data: payload.data,
+    });
+  } else {
+    return res.status(400).json({
+      success: false,
+      message: payload.error.errors[0].path + ': ' + payload.error.errors[0].message,
+    });
+  }
 };

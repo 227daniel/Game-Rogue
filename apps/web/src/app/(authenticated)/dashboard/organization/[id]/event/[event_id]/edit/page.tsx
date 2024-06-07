@@ -3,11 +3,11 @@ import DashboardPageWrapperComponent from '@/components/layout/dashboard/page';
 import EventUpdatePageComponent from '@/components/pages/dashboard/event/edit';
 import { getEventRequest } from '@/request/event';
 
-export default async function EventEditPage(props: { params: { id: string } }) {
+export default async function EventEditPage(props: { params: { event_id: string } }) {
   const {
-    params: { id },
+    params: { event_id },
   } = props;
-  const event = await getEventRequest(id);
+  const event = await getEventRequest(event_id);
 
   if (!event) {
     return notFound();

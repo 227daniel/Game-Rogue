@@ -1,8 +1,9 @@
 import eventModel from '@/models/event';
-import { TEventCreate, TEventUpdate } from '@repo/types';
+import { TEvent, TEventCreate, TEventUpdate } from '@repo/types';
+import { Types } from 'mongoose';
 
 export const getEventById = async (id: string) => {
-  const event = await eventModel.findById(id).populate('organization');
+  const event = await eventModel.findById(id).populate(['organization', 'teams', 'game']);
   if (event) {
     //@ts-ignore
     if (event?.isDeleted) {
@@ -15,7 +16,7 @@ export const getEventById = async (id: string) => {
 export const getEventByOrganizationId = async (organizationId: string) => {
   const event = await eventModel
     .find({ organizationId, isDeleted: false })
-    .populate('organization');
+    .populate(['organization', 'teams', 'game']);
   return event;
 };
 
@@ -36,33 +37,89 @@ export const deleteEventById = async (id: string | undefined) => {
 };
 
 export const getAllEvents = async () => {
-  const events = await eventModel.find({ isDeleted: false }).populate('organization');
+  const events = await eventModel
+    .find({ isDeleted: false })
+    .populate(['organization', 'teams', 'game']);
   return events;
 };
 
-export type EventStatus = 'COMPLETED' | 'UPCOMING' | 'ONGOING';
+export const getAllEventsByStatus = async (status: TEvent['status']) => {
+  const events = await eventModel
+    .find({
+      status,
+      isDeleted: false,
+    })
+    .populate(['organization', 'teams', 'game']);
+  return events;
+};
 
-export const getAllEventsByStatus = async (status: EventStatus) => {
-  const currentDate = new Date();
+export const getAllEventsGroupedByStatus = async () => {
+  const events = await eventModel.aggregate([
+    {
+      $lookup: {
+        from: 'organizations',
+        localField: 'organizationId',
+        foreignField: '_id',
+        as: 'organization',
+      },
+    },
+    {
+      $unwind: {
+        path: '$organization',
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
+      $group: {
+        _id: '$status',
+        events: { $push: '$$ROOT' },
+      },
+    },
+    {
+      $project: {
+        status: '$_id',
+        events: 1,
+        _id: 0,
+      },
+    },
+  ]);
+  return events;
+};
 
-  if (status === 'COMPLETED') {
-    const events = await eventModel
-      .find({ end_date: { $lt: currentDate }, isDeleted: false })
-      .populate('organization');
-    return events;
-  } else if (status === 'UPCOMING') {
-    const events = await eventModel
-      .find({ start_date: { $gt: currentDate }, isDeleted: false })
-      .populate('organization');
-    return events;
-  } else if (status === 'ONGOING') {
-    const events = await eventModel
-      .find({
-        start_date: { $lte: currentDate },
-        end_date: { $gte: currentDate },
-        isDeleted: false,
-      })
-      .populate('organization');
-    return events;
-  }
+export const getAllOrganizationEventsGroupedByStatus = async (id: string) => {
+  const events = await eventModel.aggregate([
+    {
+      $match: {
+        organizationId: new Types.ObjectId(id),
+      },
+    },
+    {
+      $lookup: {
+        from: 'organizations',
+        localField: 'organizationId',
+        foreignField: '_id',
+        as: 'organization',
+      },
+    },
+    {
+      $unwind: {
+        path: '$organization',
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    {
+      $group: {
+        _id: '$status',
+        events: { $push: '$$ROOT' },
+      },
+    },
+    {
+      $project: {
+        status: '$_id',
+        events: 1,
+        _id: 0,
+      },
+    },
+  ]);
+  return events;
 };

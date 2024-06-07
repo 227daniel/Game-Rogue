@@ -25,10 +25,11 @@ export default function AboutUs() {
           <section>
             <h3 className="text-center text-2xl font-bold uppercase">WHO WE ARE</h3>
             <p className="mb-8 text-left leading-[24px]">
-              Game Rogue's conception stems from three life-long friends working in a pizza shop.
+              Game Rogue&apos;s conception stems from three life-long friends working in a pizza
+              shop.
               <br />
               <br />
-              There's two sides of Game Rogue:
+              There&apos;s two sides of Game Rogue:
               <br />
               1. The platform.
               <br />
@@ -43,9 +44,9 @@ export default function AboutUs() {
               the next generation of esports event-hosting, team management, and player development.
               <br />
               <br />
-              After running several tournaments, Game Rogue shifted it's attention to offering tools
-              and layouts for organizers to host events with new looks, instant tools to save money
-              and countless hours, and to lose the headaches and awfulness of event-hosting.
+              After running several tournaments, Game Rogue shifted it&apos;s attention to offering
+              tools and layouts for organizers to host events with new looks, instant tools to save
+              money and countless hours, and to lose the headaches and awfulness of event-hosting.
               <br />
               <br />
               We developed tools for teams to begin or continue their unique path-to-pro. Create

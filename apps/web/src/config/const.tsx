@@ -175,3 +175,75 @@ export const region_data = [
     value: 'europe',
   },
 ];
+
+// {
+//   label: 'Plus Terminal',
+//   links: [
+//     {
+//       label: 'Staff Finder+',
+//     },
+//     {
+//       label: 'Team Finder+',
+//     },
+//     {
+//       label: 'Production Finder+',
+//     },
+//     {
+//       label: 'Sponsor Finder+',
+//     },
+//     'divider',
+//     {
+//       label: 'Discord API & Bot',
+//     },
+//     'divider',
+//     {
+//       label: 'Graphic Generator',
+//     },
+//   ],
+// },
+// {
+//   label: 'Marketing Terminal',
+//   links: [
+//     {
+//       label: 'Inbox',
+//     },
+//     {
+//       label: 'Email Tools',
+//     },
+//     {
+//       label: 'Automations',
+//     },
+//     'divider',
+//     {
+//       label: 'Twitter (X) Tools',
+//     },
+//     {
+//       label: 'Instagram Tools',
+//     },
+//     {
+//       label: 'Discord Tools',
+//     },
+//     'divider',
+//     {
+//       label: 'Marketing Calendar',
+//     },
+//     {
+//       label: 'Set Post Templates',
+//     },
+//   ],
+// },
+// {
+//   label: 'Payments Terminal',
+//   links: [
+//     {
+//       label: 'Update Payment Method',
+//     },
+//     {
+//       label: 'Transactions',
+//     },
+//   ],
+// },
+// {
+//   label: 'Analytics',
+//   links: [],
+// },

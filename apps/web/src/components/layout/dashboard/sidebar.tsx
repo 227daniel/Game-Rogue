@@ -1,11 +1,11 @@
 'use client';
 
-import { Tooltip, TooltipContent, TooltipTrigger } from '@repo/ui/components/ui/tooltip';
-import { CastleIcon, LandmarkIcon, PlusCircleIcon, SlidersVerticalIcon } from '@repo/ui/icons';
 import { ScrollShadow } from '@ui/components/nextui/scroll-shadow';
 import ProfileAvatarComponent from '@ui/components/shared/profile-avatar';
 import { Separator } from '@ui/components/ui/separator';
 import { Spinner } from '@ui/components/ui/spinner';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@ui/components/ui/tooltip';
+import { CastleIcon, LandmarkIcon, PlusCircleIcon, Settings } from '@ui/icons';
 import { cn } from '@ui/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -153,7 +153,7 @@ export default function DashboardLayoutSidebarComponent(): JSX.Element {
             title="Settings"
             href="/dashboard/settings"
             isActive={pathname.startsWith('/dashboard/settings')}
-            icon={<SlidersVerticalIcon className="size-5" />}
+            icon={<Settings className="size-5" />}
           />
         </nav>
       </ScrollShadow>

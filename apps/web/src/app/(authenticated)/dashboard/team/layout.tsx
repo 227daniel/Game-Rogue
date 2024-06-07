@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { Spinner } from '@ui/components/ui/spinner';
+import { ReactNode, Suspense } from 'react';
 
 export default function TeamLayout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return <Suspense fallback={<Spinner />}>{children}</Suspense>;
 }

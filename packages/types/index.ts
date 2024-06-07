@@ -13,3 +13,4 @@ export * from './subscription';
 export * from './tag';
 export * from './team';
 export * from './user';
+export * from './match';

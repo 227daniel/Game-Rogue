@@ -1,147 +1,47 @@
 'use client';
 
-import { TOrganization } from '@repo/types';
-import { useState } from 'react';
-import { Menu, MenuItem } from '@/components/pages/organizer/menu-item';
-import SelectButton from '@/components/pages/organizer/select-button';
-import UserAvatar from '@/components/pages/organizer/user-avatar';
-import { useProfile } from '@/hooks/use-profile';
-
-const menu_data: Menu[] = [
-  {
-    label: 'Event Terminal',
-    links: [
-      {
-        label: 'Matches',
-      },
-      {
-        label: 'Tickets',
-      },
-      {
-        label: 'Staff',
-      },
-      {
-        label: 'Participants',
-      },
-      {
-        label: 'Edit Events',
-      },
-      'divider',
-      {
-        label: 'Event Calendar',
-      },
-      {
-        label: 'Event Format',
-      },
-      'divider',
-      {
-        label: 'Organiser+',
-      },
-    ],
-  },
-  {
-    label: 'Plus Terminal',
-    links: [
-      {
-        label: 'Staff Finder+',
-      },
-      {
-        label: 'Team Finder+',
-      },
-      {
-        label: 'Production Finder+',
-      },
-      {
-        label: 'Sponsor Finder+',
-      },
-      'divider',
-      {
-        label: 'Discord API & Bot',
-      },
-      'divider',
-      {
-        label: 'Graphic Generator',
-      },
-    ],
-  },
-  {
-    label: 'Marketing Terminal',
-    links: [
-      {
-        label: 'Inbox',
-      },
-      {
-        label: 'Email Tools',
-      },
-      {
-        label: 'Automations',
-      },
-      'divider',
-      {
-        label: 'Twitter (X) Tools',
-      },
-      {
-        label: 'Instagram Tools',
-      },
-      {
-        label: 'Discord Tools',
-      },
-      'divider',
-      {
-        label: 'Marketing Calendar',
-      },
-      {
-        label: 'Set Post Templates',
-      },
-    ],
-  },
-  {
-    label: 'Payments Terminal',
-    links: [
-      {
-        label: 'Update Payment Method',
-      },
-      {
-        label: 'Transactions',
-      },
-    ],
-  },
-  {
-    label: 'Analytics',
-    links: [],
-  },
-];
+import { cn } from '@ui/lib/utils';
+import { LandmarkIcon } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { organizationSidebarRoutes } from '@/config/routes';
+import { useOrganization } from '@/store/use-organization';
 
 export default function OrganizationSidebarComponent() {
-  const { data } = useProfile();
-  const [selected, setSelected] = useState<string | null>(null);
-  const [selectedOrg, setSelectedOrg] = useState<TOrganization | null>(null);
+  const pathname = usePathname();
+  const { currentOrganization } = useOrganization();
   return (
-    <div className="flex size-full flex-col shadow-md">
-      <div className="flex items-center justify-center gap-5 py-4">
-        <UserAvatar isUser image={data?.image} active />
-        <UserAvatar
-          active={false}
-          image={selectedOrg ? selectedOrg.image : '/static/images/home/dark_logo.png'}
-        />
+    <div className="flex h-full max-h-screen flex-col gap-2">
+      <div className="bg-background flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+        <Link className="text-muted-foreground flex items-center gap-2 font-semibold" href="/">
+          <LandmarkIcon />
+          <span className="">Organization</span>
+        </Link>
       </div>
-      <div className="flex items-center justify-center border-b-DEFAULT border-[#757575] py-4">
-        <SelectButton setSelectedOrg={setSelectedOrg} />
+      <div className="flex-1">
+        <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+          {currentOrganization && (
+            <>
+              {organizationSidebarRoutes(currentOrganization?._id ?? '').map((item) => (
+                <Link
+                  className={cn(
+                    'flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-foreground',
+                    {
+                      'text-muted-foreground/80': !pathname.startsWith(item.href),
+                      'text-primary': pathname.startsWith(item.href),
+                    }
+                  )}
+                  href={item.href}
+                  key={item.href}
+                >
+                  {item.component}
+                  {item.label}
+                </Link>
+              ))}
+            </>
+          )}
+        </nav>
       </div>
-      {menu_data.map((menu, i) => (
-        <MenuItem
-          open={selected === menu.label}
-          toggleOpen={() => {
-            if (selected === menu.label) {
-              setSelected(null);
-            } else {
-              setSelected(menu.label);
-            }
-          }}
-          key={`menu-${i}`}
-          data={menu}
-        />
-      ))}
     </div>
   );
 }

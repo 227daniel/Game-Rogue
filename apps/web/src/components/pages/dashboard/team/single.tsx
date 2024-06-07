@@ -5,6 +5,6 @@ export default function SingleTeamPageComponent(props: {
   isOrganizer: boolean;
   team: TTeam;
 }) {
-  const { id, isOrganizer, team } = props;
+  const { team } = props;
   return <div className="flex flex-1 flex-col gap-2">{team.name}</div>;
 }

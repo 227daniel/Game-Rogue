@@ -109,12 +109,6 @@ const menu_data: Menu[] = [
   },
 ];
 
-const select_button_data = {
-  event_organizer: [{ label: 'eurogames' }],
-  organization: [{ label: 'eurogames' }],
-  teams: [{ label: 'web1' }],
-};
-
 export function Sidebar(): JSX.Element {
   const [selected, setSelected] = useState<string | null>(null);
   return (
