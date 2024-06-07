@@ -23,7 +23,7 @@ export default function DashboardHomePage(): JSX.Element {
                   width={600}
                 />
               ) : (
-                <div className="bg-primary absolute z-0 size-full" />
+                <div className="absolute z-0 size-full bg-primary" />
               )}
               <div className="z-10 flex items-center gap-2">
                 {error ? (

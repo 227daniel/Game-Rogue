@@ -7,12 +7,12 @@ export default function SingleEventPageComponent(props: {
   isOrganizer: boolean;
   event: TEvent;
 }) {
-  const { id, isOrganizer, event } = props;
+  const { id, event } = props;
   return (
     <div className="flex flex-1 flex-col gap-2">
       <h1>{event.name}</h1>
       <Button asChild>
-        <Link href={`/dashboard/event/${id}/edit`}>edit</Link>
+        <Link href={`/dashboard/organization/event/${id}/edit`}>edit</Link>
       </Button>
     </div>
   );

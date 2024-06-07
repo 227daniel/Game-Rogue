@@ -1,14 +1,16 @@
+import eventModel from '@/models/event';
 import organizationModel from '@/models/organization';
 import { removeFromGoogleStorage } from '@/utils/storage';
 import { log } from '@repo/logger';
 import {
   TApiResponse,
   ZApiRequestPaginated,
-  ZOrganizationUpdate,
   ZOrganizationCreate,
+  ZOrganizationUpdate,
   ZSocialItem,
 } from '@repo/types';
 import { Request, Response, Express } from 'express';
+import { Types } from 'mongoose';
 import path from 'path';
 
 export const getOrganizations = async (req: Request, res: Response) => {
@@ -195,6 +197,18 @@ export const getOrganization = async (req: Request, res: Response) => {
     });
   return res.json({
     data: item,
+    success: true,
+    message: 'success',
+  });
+};
+
+export const getOrganizationEvents = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const events = await eventModel
+    .find({ organizationId: new Types.ObjectId(id) })
+    .populate(['organization', 'teams', 'game']);
+  return res.json({
+    data: events,
     success: true,
     message: 'success',
   });

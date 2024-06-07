@@ -20,9 +20,9 @@ export default function AboutSection() {
           WHAT IS GAME ROGUE?
         </h3>
         <p className="mb-4 text-lg md:mb-6 md:text-xl">
-          Don't know Game Rogue? We've been hosting tournaments since 2018 and would love for you to
-          join the experience! We tailor to our community, fulfilling our obligations time-in and
-          time-out since our creation.
+          Don&apos;t know Game Rogue? We&apos;ve been hosting tournaments since 2018 and would love
+          for you to join the experience! We tailor to our community, fulfilling our obligations
+          time-in and time-out since our creation.
         </p>
         <p className="mb-4 text-lg md:mb-6 md:text-xl">
           Thank you to our community for giving us the ability to host tournaments and provide the

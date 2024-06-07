@@ -1,7 +1,7 @@
 import { TModel } from './document';
 import { z } from 'zod';
 
-const ZStream = z.object({
+export const ZStream = z.object({
   name: z.string().optional(),
   thumbnailUrl: z.string().optional(),
   description: z.string().optional(),

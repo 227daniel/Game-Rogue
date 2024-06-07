@@ -55,7 +55,7 @@ export default function EventItem({
                 alt=""
                 className="object-cover"
               />
-              <div className="w-[200px] overflow-hidden lg:w-[250px]">
+              <div className="w-[200px] overflow-hidden lg:w-[210px]">
                 <h4
                   style={{
                     color: event_branding_primary_color,

@@ -18,8 +18,8 @@ export default function NextGenerationSection() {
               Or a team looking to build with the most influential tools to win and grow?
             </p>
             <p className="text-md mb-4 text-white">
-              Maybe you're just a player or content creator looking for casual play or professional
-              development?
+              Maybe you&apos;re just a player or content creator looking for casual play or
+              professional development?
             </p>
             <p className="text-md mb-4 text-white">
               We have every feature bundled in low-cost packages with the most fundamental features

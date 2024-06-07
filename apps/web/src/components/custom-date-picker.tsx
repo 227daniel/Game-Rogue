@@ -27,7 +27,7 @@ export default function CustomInputDatePicker({
     if (defaultValue) {
       setDate(new Date(defaultValue));
     }
-  }, []);
+  }, [defaultValue]);
   return (
     <Popover>
       <PopoverTrigger asChild>

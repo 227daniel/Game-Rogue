@@ -1,14 +1,14 @@
 import DashboardPageWrapperComponent from '@/components/layout/dashboard/page';
 import EventCreatePageComponent from '@/components/pages/dashboard/event/create';
 
-export default function EventCreatePage(props: { searchParams: { organizationId?: string } }) {
+export default function EventCreatePage(props: { params: { id?: string } }) {
   const {
-    searchParams: { organizationId },
+    params: { id },
   } = props;
-  console.log(organizationId);
+  console.log(id);
   return (
     <DashboardPageWrapperComponent title="Create Event">
-      <EventCreatePageComponent organizationId={organizationId} />
+      <EventCreatePageComponent organizationId={id} />
     </DashboardPageWrapperComponent>
   );
 }

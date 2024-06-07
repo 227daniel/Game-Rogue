@@ -17,6 +17,8 @@
     },
     "editor.inlineSuggest.enabled": true,
     "cSpell.words": [
+        "nextui",
+        "rulebook",
         "virtuals"
     ]
 }

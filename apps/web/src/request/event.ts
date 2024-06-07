@@ -93,10 +93,24 @@ export const getEventsRequest = async () => {
     .then((data) => data.data);
 };
 
-export const getEventsByStatusRequest = async (status: 'COMPLETED' | 'UPCOMING' | 'ONGOING') => {
+export const getEventsByStatusRequest = async (status: TEvent['status']) => {
   return await apiClient
     .get(`/event?status=${status}`)
     .then((res) => res.data as TApiResponse<TEvent[]>)
+    .then((data) => data.data);
+};
+
+export const getEventsGroupedByStatusRequest = async () => {
+  return await apiClient
+    .get(`/event/status/grouped`)
+    .then((res) => res.data as TApiResponse<{ events: TEvent[]; status: string }[]>)
+    .then((data) => data.data);
+};
+
+export const getOrganizationEventsGroupedByStatusRequest = async (org_id: string) => {
+  return await apiClient
+    .get(`/event/organization/${org_id}/status/grouped`)
+    .then((res) => res.data as TApiResponse<{ events: TEvent[]; status: string }[]>)
     .then((data) => data.data);
 };
 
