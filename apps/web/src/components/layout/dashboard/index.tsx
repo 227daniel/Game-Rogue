@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
-import SharedNavbarComponent from '../shared/navbar';
-import DashboardLayoutSidebarComponent from './sidebar';
 import SharedNavbarTvComponent from '../shared/navbar-tv';
+import DashboardLayoutSidebarComponent from './sidebar';
 
 export default function DashboardLayoutComponent({
   children,

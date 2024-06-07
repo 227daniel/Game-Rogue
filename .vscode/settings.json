@@ -15,5 +15,8 @@
         "other": "on",
         "strings": "on"
     },
-    "editor.inlineSuggest.enabled": true
+    "editor.inlineSuggest.enabled": true,
+    "cSpell.words": [
+        "virtuals"
+    ]
 }

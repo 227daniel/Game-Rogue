@@ -32,7 +32,8 @@ export const useAuthOrganizations = () => {
     queryFn: async () => {
       return apiClient
         .get('/auth/organization')
-        .then((response) => response.data as TApiResponse<TOrganization[]>);
+        .then((response) => response.data as TApiResponse<TOrganization[]>)
+        .then((data) => data.data);
     },
   });
   return { ...query, queryKey };

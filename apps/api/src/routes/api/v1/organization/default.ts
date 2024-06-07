@@ -187,7 +187,7 @@ export const updateOrganizationSocial = async (req: Request, res: Response) => {
 
 export const getOrganization = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const item = await organizationModel.findById(id);
+  const item = await organizationModel.findById(id).populate('user');
   if (!item)
     return res.status(404).json({
       success: false,

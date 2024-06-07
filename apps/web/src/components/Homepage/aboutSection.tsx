@@ -13,7 +13,7 @@ export default function AboutSection() {
       style={{ backgroundImage: 'url(/static/images/home/about_us_bg.gif)' }}
     >
       <div
-        className="max-w-940 border-3 py-30 border-primary mx-auto max-w-[50rem] rounded-3xl bg-black px-10 pb-12 text-center
+        className="max-w-940 border-3 py-30 mx-auto max-w-[50rem] rounded-3xl border-primary bg-black px-10 pb-12 text-center
         text-white"
       >
         <h3 className="mb-4 pt-10 text-3xl font-bold  md:mb-6 md:text-3xl lg:text-4xl">

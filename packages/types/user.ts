@@ -23,6 +23,7 @@ export enum TUserGender {
 }
 
 export const ZUser = z.object({
+  id: z.string(),
   name: z.string().min(4).max(20),
   email: z.string().email(),
   image: z.string().optional(),

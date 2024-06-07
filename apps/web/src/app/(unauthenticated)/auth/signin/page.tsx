@@ -61,7 +61,7 @@ export default function SignInPage({
               <Image
                 alt="google"
                 height={20}
-                src={`https://authjs.dev/img/providers${provider.name.toLowerCase()}.svg`}
+                src={`https://authjs.dev/img/providers/${provider.name.toLowerCase()}.svg`}
                 width={20}
               />
               <span className="ml-2">Login with {provider.name}</span>

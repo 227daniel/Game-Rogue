@@ -29,7 +29,7 @@ export default function Providers({ children }: { children: ReactNode }): ReactN
             navigate: router.push,
           }}
         >
-          <Toaster />
+          <Toaster theme="system" />
           <TooltipProvider>{children}</TooltipProvider>
         </NextThemeProvider>
       </QueryClientProvider>

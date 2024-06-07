@@ -49,9 +49,6 @@ export default function OrganizationCreatePageComponent() {
       }
     );
   };
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
   return (
     <div className="flex flex-1">
       <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-4">
