@@ -11,8 +11,9 @@ import { useOrganization } from '@/store/use-organization';
 export default function SingleOrganizationPageComponent(props: {
   organization: TOrganization;
   id: string;
+  isOrganizer: boolean;
 }) {
-  const { id, organization } = props;
+  const { id, organization, isOrganizer } = props;
   const { setCurrentOrganization } = useOrganization();
   useEffect(() => {
     setCurrentOrganization(organization);
@@ -35,6 +36,15 @@ export default function SingleOrganizationPageComponent(props: {
       <ProfileAvatarComponent name={organization.name} src={organization.image} size="lg" />
       <div>ID: {id}</div>
       <div>Name: {organization.name}</div>
+      {isOrganizer && (
+        <Button
+          color="primary"
+          as={Link}
+          href={`/dashboard/event/new?organizationId=${organization._id}`}
+        >
+          Create Event
+        </Button>
+      )}
     </div>
   );
 }

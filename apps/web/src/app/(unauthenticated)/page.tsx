@@ -1,5 +1,9 @@
 'use client';
 
+import { Button } from '@repo/ui/components/nextui/button';
+import { Link } from '@repo/ui/components/nextui/link';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import AboutSection from '@/components/Homepage/aboutSection';
 import BenefitSection from '@/components/Homepage/benefitSection';
 import CarouselSection from '@/components/Homepage/carouselSection';
@@ -7,11 +11,7 @@ import Footer from '@/components/Homepage/Footer';
 import NextGenerationSection from '@/components/Homepage/nextGenerationSection';
 import SponsoredBySection from '@/components/Homepage/sponsoredBySection';
 import DefaultLayoutComponent from '@/components/layout/default';
-import { Button } from '@repo/ui/components/nextui/button';
-import { Link } from '@repo/ui/components/nextui/link';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import Messages from '../../components/message/Messages';
+import Messages from '@/components/message/Messages';
 
 export default function Web(): JSX.Element {
   const [banner, setBanner] = useState(0);
@@ -39,7 +39,7 @@ export default function Web(): JSX.Element {
               </div>
             )}
             <div
-              className={`bg-primary absolute inset-0 flex items-center justify-center ${banner !== 1 && banner !== 3 && banner !== 5 ? 'opacity-0' : 'opacity-100'}`}
+              className={`absolute inset-0 flex items-center justify-center bg-primary ${banner !== 1 && banner !== 3 && banner !== 5 ? 'opacity-0' : 'opacity-100'}`}
             >
               {banner === 1 && (
                 <Link href="">
@@ -98,7 +98,7 @@ export default function Web(): JSX.Element {
           <CarouselSection />
         </div>
         <NextGenerationSection />
-        <div className="bg-primary relative">
+        <div className="relative bg-primary">
           <BenefitSection />
         </div>
         <AboutSection />

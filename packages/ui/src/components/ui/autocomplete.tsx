@@ -61,6 +61,7 @@ export function AutoComplete({
 
   const handleBlur = useCallback(() => {
     setIsOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- h
   }, [selected]);
 
   const handleSelectOption = useCallback(

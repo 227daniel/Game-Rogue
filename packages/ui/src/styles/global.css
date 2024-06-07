@@ -57,7 +57,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background border-primary text-foreground;
+    @apply bg-background border-primary;
   }
   :root,
   .dark {

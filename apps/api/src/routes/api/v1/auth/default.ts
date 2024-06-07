@@ -5,6 +5,7 @@ import type { Request, Response, Express } from 'express';
 import type { Document } from 'mongoose';
 import * as path from 'path';
 import { removeFromGoogleStorage } from '@/utils/storage';
+import teamModel from '@/models/team';
 
 export const getProfile = async (req: Request, res: Response) => {
   const user = ZUser.safeParse(res.locals.user);
@@ -63,6 +64,16 @@ export const getUserOrganizations = async (req: Request, res: Response) => {
   const organizations = await organizationModel.find({ userId: user._id });
   return res.json({
     data: organizations,
+    success: true,
+    message: 'success',
+  });
+};
+
+export const getUserTeams = async (req: Request, res: Response) => {
+  const user = res.locals.user as TUser;
+  const teams = await teamModel.find({ userId: user._id });
+  return res.json({
+    data: teams,
     success: true,
     message: 'success',
   });

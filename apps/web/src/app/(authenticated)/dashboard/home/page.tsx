@@ -9,7 +9,7 @@ import { useProfile } from '@/hooks/use-profile';
 export default function DashboardHomePage(): JSX.Element {
   const { data: profile, error, isPending } = useProfile();
   return (
-    <DashboardPageWrapperComponent title="Home">
+    <DashboardPageWrapperComponent title="Dashboard">
       <div className="grid h-fit w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div className="relative flex w-full flex-col items-center justify-center gap-1 overflow-hidden rounded-xl border p-4 text-center">
           {!isPending ? (
@@ -23,7 +23,7 @@ export default function DashboardHomePage(): JSX.Element {
                   width={600}
                 />
               ) : (
-                <div className="absolute z-0 size-full bg-primary" />
+                <div className="bg-primary absolute z-0 size-full" />
               )}
               <div className="z-10 flex items-center gap-2">
                 {error ? (

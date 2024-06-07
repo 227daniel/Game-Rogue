@@ -5,7 +5,9 @@ import { Button } from '@repo/ui/components/ui/button';
 import { Input } from '@repo/ui/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@repo/ui/components/ui/sheet';
 import { Menu, Search } from '@repo/ui/icons';
+import { cn } from '@ui/lib/utils';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import UserDropdownComponent from '@/components/layout/common/user-dropdown';
 import { SiteDefaultIcons, siteTitle } from '@/config/const';
@@ -13,17 +15,22 @@ import { siteRoutes } from '@/config/routes';
 
 export default function SharedNavbarTvComponent(): JSX.Element {
   const { data: session } = useSession();
+  const pathName = usePathname();
   return (
     <header className="!border-border bg-background sticky top-0 z-50 flex h-16 items-center gap-4 border-b px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link className="flex items-center gap-2 text-lg font-semibold md:text-base" href="#">
+        <Link className="flex items-center gap-2 text-lg font-semibold md:text-base" href="/">
           <SiteDefaultIcons />
           <span className="sr-only">{siteTitle}</span>
         </Link>
         {session?.user
           ? siteRoutes.map((route) => (
               <Link
-                className="text-muted-foreground active:text-foreground hover:text-foreground transition-colors"
+                className={cn('transition-colors', {
+                  'text-primary': pathName.startsWith(route.href),
+                  'text-muted-foreground active:text-foreground hover:text-foreground':
+                    !pathName.startsWith(route.href),
+                })}
                 href={route.href}
                 key={route.href}
               >

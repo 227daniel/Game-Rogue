@@ -3,28 +3,51 @@
 import { Input } from '@repo/ui/components/nextui/input';
 import { SearchIcon } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ChangeEventHandler, KeyboardEventHandler, useEffect, useState } from 'react';
 import NavItem from '../../Header/NavItem';
 import NavItemAuth from '../../Header/NavItemAuth';
 
+// Mapping paths to page names
+const pathToPageMap: { [key: string]: string } = {
+  '/': 'home',
+  '/dashboard/event': 'event',
+  '/event/create': 'event',
+  '/event': 'event',
+  '/match/upcoming': 'event',
+  '/event/upcoming': 'event',
+  '/event/ongoing': 'event',
+  '/event/completed': 'event',
+  '/rogue-social/manage-accounts': 'rogue-social',
+  '/rogue-social': 'rogue-social',
+  '/rogue-social/organizer': 'rogue-social',
+  '/tv': 'rogue-tv',
+  '/article': 'articles',
+  '/shop': 'shop',
+  '/organizer': 'organizer',
+  '/video-editor': 'tools',
+  '/wiki': 'tools',
+  '/faqs': 'tools',
+  '/team/create': 'plus-plans',
+  '/organizer/create': 'plus-plans',
+  '/auth/signup': 'auth',
+  '/auth/signin': 'auth',
+};
 export default function SharedNavbarComponent(): JSX.Element {
+  const pathname = usePathname();
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState('home');
   const handleClickHome = () => {
     router.push('/');
-    setCurrentPage('home');
   };
   const handleClickEvent = () => {
     router.push('/event');
-    setCurrentPage('event');
   };
   const handleClickRogueSocial = () => setCurrentPage('rogue-social');
   const handleClickOrganize = () => {
-    router.push('/organizer');
-    setCurrentPage('organize');
+    router.push('/dashboard/organizer');
   };
   const handleClickTools = () => setCurrentPage('');
   const handleClickPlusPlans = () => setCurrentPage('plus-plans');
@@ -40,6 +63,12 @@ export default function SharedNavbarComponent(): JSX.Element {
       router.push('/' + search);
     }
   };
+
+  useEffect(() => {
+    if (pathname in pathToPageMap) {
+      setCurrentPage(pathToPageMap[pathname]);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +88,7 @@ export default function SharedNavbarComponent(): JSX.Element {
       <nav
         className={`fixed left-0 top-0 z-50 w-full shadow-xl transition-all duration-300 lg:hidden ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="bg-background border-b-3 border-primary sticky top-0 z-50 flex h-16 items-center justify-start gap-4 shadow-xl">
+        <div className="bg-background border-b-3 sticky top-0 z-50 flex h-16 items-center justify-start gap-4 border-primary shadow-xl">
           <NavItemAuth
             name="Auth"
             handleClick={handleClickEvent}
@@ -84,7 +113,7 @@ export default function SharedNavbarComponent(): JSX.Element {
       <nav
         className={`fixed left-0 top-0 z-50 hidden w-full shadow-xl transition-all duration-300 lg:block ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="bg-background border-b-3 border-primary sticky top-0 z-50 flex h-16 items-center gap-4 shadow-xl">
+        <div className="bg-background border-b-3 sticky top-0 z-50 flex h-16 items-center gap-4 border-primary shadow-xl">
           <div className="flex w-full items-center justify-between gap-1 space-x-4 px-2">
             <div className="flex items-center justify-start gap-1">
               <div className="relative flex h-10 items-end gap-1 pr-4">
@@ -195,7 +224,7 @@ export default function SharedNavbarComponent(): JSX.Element {
                     name: 'My Organization',
                     key: 'my-organizer',
                     isLink: true,
-                    to: '/organizer',
+                    to: '/dashboard/rogue-social/organizer',
                   },
                   {
                     name: 'Producer Dashboard',

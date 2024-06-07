@@ -22,7 +22,8 @@ const multerGoogleStorage = serviceAccount
       projectId: serviceAccount.project_id,
       credentials: serviceAccount,
       destination: (req, file, cb) => {
-        const subPath = /organization/i.test(req.url) ? 'organization' : 'user';
+        const [...pathArr] = req.baseUrl.split('/');
+        const subPath = pathArr.length > 3 ? pathArr[3] : pathArr[pathArr.length - 1];
         const filePath = path.join(
           bucketRoot,
           subPath,
@@ -90,6 +91,15 @@ const thumbnailUploader = multer({ storage: multerGoogleStorage }).fields([
   { name: 'thumbnail', maxCount: 1 },
 ]);
 
+const eventImagesUploader = multer({ storage: multerGoogleStorage }).fields([
+  { name: 'event_graphic', maxCount: 1 },
+  { name: 'event_logo_dark', maxCount: 1 },
+  { name: 'event_logo_light', maxCount: 1 },
+  { name: 'rulebook_file', maxCount: 1 },
+  { name: 'terms_conditions_file', maxCount: 1 },
+  { name: 'terms_privacy_policy_file', maxCount: 1 },
+]);
+
 export {
   storage,
   mediaBucket,
@@ -98,4 +108,5 @@ export {
   removeFromGoogleStorage,
   profileUploader,
   thumbnailUploader,
+  eventImagesUploader,
 };

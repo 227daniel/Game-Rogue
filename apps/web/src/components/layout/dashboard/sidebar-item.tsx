@@ -18,7 +18,7 @@ export default function SidebarItemComponent(props: SidebarItemComponentProps): 
       <TooltipTrigger asChild>
         <Link
           className={cn(
-            'flex items-center justify-center transition-colors rounded-full h-9 w-9 hover:text-foreground md:h-8 md:w-8',
+            'flex items-center !flex-shrink-0 justify-center transition-colors rounded-full h-9 w-9 hover:text-foreground md:h-8 md:w-8',
             {
               'text-muted-foreground': !isActive,
               'text-primary bg-primary/20': isActive,

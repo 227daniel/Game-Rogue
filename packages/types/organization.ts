@@ -4,6 +4,7 @@ import { ZSocialItem } from './social';
 import { TUser } from 'user';
 
 export const ZOrganization = z.object({
+  _id: z.string(),
   name: z.string().min(5, 'Name should be at least 5 characters long'),
   description: z.string().optional(),
   userId: z.string(),
