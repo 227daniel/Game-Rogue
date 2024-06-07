@@ -48,9 +48,6 @@ importers:
       '@repo/types':
         specifier: workspace:^
         version: link:../../packages/types
-      '@repo/utils':
-        specifier: workspace:^
-        version: link:../../packages/utils
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -100,6 +97,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:^
         version: link:../../packages/typescript-config
+      '@repo/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
       '@types/body-parser':
         specifier: ^1.19.5
         version: 1.19.5
@@ -152,7 +152,7 @@ importers:
         specifier: ^6.3.3
         version: 6.3.4
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
   apps/web:
@@ -639,7 +639,7 @@ importers:
         specifier: ^3.4.3
         version: 3.4.3
       typescript:
-        specifier: ^5.3.3
+        specifier: ^5.4.5
         version: 5.4.5
 
   packages/utils:
