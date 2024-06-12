@@ -45,7 +45,9 @@ export default function SharedNavbarComponent(): JSX.Element {
   const handleClickEvent = () => {
     router.push('/event');
   };
-  const handleClickRogueSocial = () => setCurrentPage('rogue-social');
+  const handleClickRogueSocial = () => {
+    router.push('/rogue-social');
+  };
   const handleClickOrganize = () => {
     router.push('/dashboard/organizer');
   };
@@ -88,7 +90,7 @@ export default function SharedNavbarComponent(): JSX.Element {
       <nav
         className={`fixed left-0 top-0 z-50 w-full shadow-xl transition-all duration-300 lg:hidden ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="bg-background border-b-3 sticky top-0 z-50 flex h-16 items-center justify-start gap-4 border-primary shadow-xl">
+        <div className="bg-background border-b-3 border-primary sticky top-0 z-50 flex h-16 items-center justify-start gap-4 shadow-xl">
           <NavItemAuth
             name="Auth"
             handleClick={handleClickEvent}
@@ -113,7 +115,7 @@ export default function SharedNavbarComponent(): JSX.Element {
       <nav
         className={`fixed left-0 top-0 z-50 hidden w-full shadow-xl transition-all duration-300 lg:block ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="bg-background border-b-3 sticky top-0 z-50 flex h-16 items-center gap-4 border-primary shadow-xl">
+        <div className="bg-background border-b-3 border-primary sticky top-0 z-50 flex h-16 items-center gap-4 shadow-xl">
           <div className="flex w-full items-center justify-between gap-1 space-x-4 px-2">
             <div className="flex items-center justify-start gap-1">
               <div className="relative flex h-10 items-end gap-1 pr-4">
