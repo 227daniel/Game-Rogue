@@ -343,6 +343,7 @@ input#search::placeholder {
 }
 
 .tweet-textedit {
+  right:5px;
   position: relative;
   z-index: inherit
 }
@@ -397,7 +398,6 @@ input#search::placeholder {
 }
 
 .tweet-container {
-  position: relative;
   border: 1px solid #fff;
   border-radius: 10px;
   overflow: hidden;

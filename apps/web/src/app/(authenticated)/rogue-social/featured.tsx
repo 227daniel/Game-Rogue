@@ -6,7 +6,13 @@ export default function Featured() {
         <hr className="border-orange-400" />
         <div className="px-[80px] py-[50px] text-center drop-shadow-[0_0_1.25rem_rgba(255,255,255,1)]">
           <div>
-            <img src="static/images/home/featured_bg.png" />
+            <img src="static/images/home/featured_bg.png" className="relative" />
+            <div className="absolute bottom-[450px] left-[100px]">
+              <button className="text-[72px]">{'‹'}</button>
+            </div>
+            <div className="absolute bottom-[450px] right-[100px]">
+              <button className="text-[72px]">{'›'}</button>
+            </div>
             <div
               className="flex h-[65px] space-x-3 border-2 border-solid border-white bg-orange-400 pl-[10px]"
               style={{ alignItems: 'center', textAlign: 'center' }}

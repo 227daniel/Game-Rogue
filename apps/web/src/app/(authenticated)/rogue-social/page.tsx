@@ -1,5 +1,6 @@
 'use client';
 import React, { ReactNode, useCallback, useState } from 'react';
+import Messages from '../../../components/message/Messages';
 import Discover from './discover';
 import Featured from './featured';
 import Footer from './footer';
@@ -28,6 +29,7 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
     <>
       <br />
       <br />
+      <Messages />
       <div className="flex flex-col">
         <div className="flex w-full flex-col">
           <div className="grid grid-cols-12">

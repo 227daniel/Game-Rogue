@@ -13,6 +13,7 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import remarkStringify from 'remark-stringify';
+
 import RichTextInput from './RichTextInput';
 
 import RightBar from './rightbar';
@@ -153,7 +154,7 @@ export default function Home() {
                         placeholder="What's new?"
                         handleContentChange={onContentChange}
                       />
-                      <div className="absolute bottom-4 right-4">
+                      <div className="absolute bottom-4 right-6">
                         <Button
                           className="bg-foreground h-10 rounded-2xl text-white"
                           onClick={onPost}
@@ -221,7 +222,7 @@ export default function Home() {
                         placeholder="What's new?"
                         handleContentChange={onContentChange}
                       />
-                      <div className="absolute bottom-4 right-4">
+                      <div className="absolute bottom-4 right-6">
                         <Button
                           className="bg-foreground h-10 rounded-2xl text-white"
                           onClick={onPost}
