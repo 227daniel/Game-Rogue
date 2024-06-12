@@ -39,9 +39,11 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@nextui-org/accordion": "^2.0.34",
     "@nextui-org/autocomplete": "^2.0.14",
     "@nextui-org/avatar": "^2.0.25",
     "@nextui-org/button": "^2.0.27",
+    "@nextui-org/checkbox": "^2.1.1",
     "@nextui-org/date-picker": "^2.1.1",
     "@nextui-org/input": "^2.1.19",
     "@nextui-org/link": "^2.0.29",
@@ -51,6 +53,7 @@
     "@nextui-org/spacer": "^2.0.25",
     "@nextui-org/spinner": "^2.0.25",
     "@nextui-org/system": "^2.1.0",
+    "@nextui-org/table": "^2.0.35",
     "@nextui-org/tabs": "^2.0.29",
     "@nextui-org/theme": "^2.2.0",
     "@nextui-org/tooltip": "^2.0.33",
