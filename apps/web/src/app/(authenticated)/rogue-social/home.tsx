@@ -212,7 +212,26 @@ export default function Home() {
                     </div>
                   ))}
                 </Tab>
-                <Tab key="following" title="FOLLOWING" />
+                <Tab key="following" title="FOLLOWING">
+                  <div className="relative px-0 py-2">
+                    <div className="tweet-container">
+                      <RichTextInput
+                        content={content}
+                        className="tweet-textedit"
+                        placeholder="What's new?"
+                        handleContentChange={onContentChange}
+                      />
+                      <div className="absolute bottom-4 right-4">
+                        <Button
+                          className="bg-foreground h-10 rounded-2xl text-white"
+                          onClick={onPost}
+                        >
+                          Post
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Tab>
               </Tabs>
             </div>
           </div>
