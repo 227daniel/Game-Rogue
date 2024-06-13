@@ -1,0 +1,21 @@
+# Backend
+NODE_ENV=development
+API_PORT=8000
+DB_URL=mongodb://127.0.0.1:27017/development
+GOOGLE_SERVICE_ACCOUNT = '{"type": "service_account","project_id": "game-rogue-81562","private_key_id": "83e4bd42ea85ef5e16d33759f4441ff82fe1c11a","private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2mI2isVVGmM9R\nUucpxHwqk7z+jTC6aPQrUT0LZRWJX2ZnC6wJOyJh38+euXNXhRIHfsRsRv0ICAK8\n4t+hgeq8eRFhnsuJs0Z7YlK8TRgpqUDqZrY42mCAbv+4mlcHTl7KhvtKSvZdUlK5\nrqHEID2IjnK9ya8jb/QDdoUhriOoaiP3LKx6ijURqbIIbNhc3iCTN11SuHSTVTpw\nYBuMNEPfGc/aLSSw5ZTjHi1TCARHJ4lTzZZgdj98uyW9ZWkvR0iz8MKpGFOXTdX5\nLUB/av8HRtTAEG4p3J7NU7lmefr6C5gw0/RThY/jp0CO4up2lW8vhMAoSpzgE/7q\n3DKUFziVAgMBAAECggEAIAlbDFj1v8mu0jNr+IGPUX8TUUwfaQ1iDbmWrsmhAjW5\nR0oeeI4mBasZh9081fW0iJkeyGqaGY8iP9bEatdbAo9xU8HjLzlDnAFPx9b07tZR\n2+6CeS4jcVVIS7DUpSUEb59INqw5Vn1Lo2V232zSrwNjMVZSArMxSmxAhnzBp9oO\n9IS0zZUTWW6M4z2nJGVBoJhoNzwoOvuue4+mCHC48ZGsZDUQAd7rdj8dadNdBds1\nCgp1JF57dVXaAPLLe4+BvFYUFwa0K7Isbe2gskYcIrOO/Jxnbi8UrnpTK11MO8XD\n8vbpfH5YRzzHEHRBroaVFlx1jEwD8Le1B0+9WbOgUQKBgQD4bXri8LO7yKl+8o28\nzzkZcQnRy6ZDfLlmafZH8V018fCgWnQzpCWzHZYK2MDAp6wjhtRuqM8YRrp5H9jy\nzF2nmTbmz2O8Vtp4eYxD/1dpETx4dL4dmx/1WDeZWcD3Z2mGI94MD7qY2nctzUvd\nIX6MRf72ye2HqZwA/2fpvcY5/QKBgQC8KWC3u2wCiolTfrjLVfnw/tgzeKLGAfBR\n69mLSkXdIP0D3VTcdRFtPUO/eNM3tPvUHLYGmpiQJ8IPnaGPFILPATGPxdQW9YDM\ncqL8v1ULFXj8Kqbh+LCkeu6Du0V8LJCZgmqMXK//XFd8DC18QV5zZOsk+nQZK6gI\nGAgOhL4QeQKBgQChidcJcIj+x2lnseL2bizr3TQMZocThSuta6OIfmsk49CbBJZg\n6hDVmpxxKyaTX7QwWcESv9QCLiOdFVdl8fvIOnmXti1dT4C6LBdIM+Yr3NhcX1Us\nPS2XxKhKoDE47taQMgx1/VhRgmVStBbrkJcQMYesA/vfZiuZ/nocZJlcJQKBgA8J\nK25jLrVhRqoCZVfyTd/BLZunVzKFcyPIugCUddK+0Rke9aoMPNFC5QgG6rH352vC\nw5Txg6F5W9uNmBxr4iwSh1ha0aDoC1vLCVUzIOOa2qkj62QBUHREUoz6SQosMX3i\n2wrOWU4JngAOpQ/Z1WdZOCUjUmW0hF/pM7OdTebZAoGBAMy8Z+GmTqd7AeFzlAVp\nLAHCqQPkpP8cgCt7Y0MWvlG2f2kX5jlXveKMF1OxFSAbJQxlfLfN1D7GYFF3foeh\nw9p2/+i1pFxuWJeaUIDPf3S+Rk4OJBczjqODq5OIhvx4AsYGAEAMRGTiuGKrvRaM\nJfeGfwGqbuio95NKx+OrNjwY\n-----END PRIVATE KEY-----\n","client_email": "832878847324-compute@developer.gserviceaccount.com","client_id": "107057768394194399042","auth_uri": "https://accounts.google.com/o/oauth2/auth","token_uri": "https://oauth2.googleapis.com/token","auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/832878847324-compute%40developer.gserviceaccount.com","universe_domain": "googleapis.com"}'
+GOOGLE_STORAGE_BUCKET_NAME=game-rogue-81562.appspot.com
+
+# Frontend
+
+NEXT_PUBLIC_API_URL=http://localhost:8000
+
+AUTH_GOOGLE_ID=832878847324-ejj6jak1t63iupe2nrb7us4b3i2ku4iu.apps.googleusercontent.com
+AUTH_GOOGLE_SECRET=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
+AUTH_SECRET=aAZ1xNjXPCB7kB4gp85dpCKW5K5I94QuUyO5X6343ok=
+
+NEXT_PUBLIC_LIVEKIT_WS_URL=wss://game-rogue-llc-lg1wu2fb.livekit.cloud/
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51NVN8aLZvTUR5WIHD0CZsZBu8yv1SZXLMZg7uqGLi0ZOhQMqw8Ga5yyDSVy0P0xYlH0t9fzbDi2d080slgblu0iF00agOSmjtp
+
+LIVEKIT_API_URL=wss://game-rogue-llc-lg1wu2fb.livekit.cloud
+LIVEKIT_API_KEY=APICPtSxtxEx95L
+LIVEKIT_SECRET_KEY=gSNEAWlvNah99R4e9AjXs9mPfQ6RCfFzWFqBpAxamp3B
