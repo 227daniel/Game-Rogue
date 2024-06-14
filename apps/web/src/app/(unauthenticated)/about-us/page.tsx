@@ -70,8 +70,8 @@ export default function AboutUs() {
               <br />
               The story starts here.
             </p>
-            <p className="text-lg text-primary">Community first, always.</p>
-            <div className="mb-6 mt-3 h-0.5 w-auto bg-primary lg:my-24"></div>
+            <p className="text-primary text-lg">Community first, always.</p>
+            <div className="bg-primary mb-6 mt-3 h-[2px] w-auto lg:my-24"></div>
           </section>
 
           <section className="mb-40 lg:mb-20">
@@ -94,7 +94,7 @@ export default function AboutUs() {
             <p className="mb-8">
               For general inquiries, please email
               <a
-                className="ml-1 text-primary"
+                className="text-primary ml-1"
                 href="mailto:hello@grilla.gg"
                 target="_blank"
                 rel="nofollow"
@@ -109,7 +109,7 @@ export default function AboutUs() {
             <p className="mb-8">
               For partnership or collaboration inquiries, please email
               <a
-                className="ml-1 text-primary"
+                className="text-primary ml-1"
                 href="mailto:partnerships@grilla.gg"
                 target="_blank"
                 rel="nofollow"
@@ -124,7 +124,7 @@ export default function AboutUs() {
             <p className="mb-8">
               For press or affiliate inquiries, please email
               <a
-                className="ml-1 text-primary"
+                className="text-primary ml-1"
                 href="mailto:press@grilla.gg"
                 target="_blank"
                 rel="nofollow"

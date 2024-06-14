@@ -18,7 +18,13 @@ interface NavItemProps {
   active?: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ name, items, isDropdown, handleClick, active }) => {
+const NavVerticalItem: React.FC<NavItemProps> = ({
+  name,
+  items,
+  isDropdown,
+  handleClick,
+  active,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleOpen = () => {
@@ -42,15 +48,13 @@ const NavItem: React.FC<NavItemProps> = ({ name, items, isDropdown, handleClick,
           onMouseLeave={handleClose}
           className={cn('w-full p-1 gif-once', active && 'bg-foreground')}
         >
-          <span className="font-bold uppercase text-white max-sm:text-[10px] sm:text-[18px] lg:text-[12px] xl:text-[18px]">
-            {name}
-          </span>
+          <span className="text-[12px] font-bold uppercase text-white">{name}</span>
         </button>
       </div>
       <div
         id={`${name}-menu`}
         className={cn(
-          'absolute group-hover:transition-transform duration-200 ease-out origin-top left-1/2 top-full mt-1 invisible group-hover:visible -translate-x-1/2 flex-col items-center whitespace-nowrap rounded-md bg-amber-950 p-2 text-center text-white shadow-lg flex',
+          'text-[12px] absolute group-hover:transition-transform duration-200 ease-out origin-right left-full top-0 mt-1 invisible group-hover:visible -translate-x-0 flex-col items-center whitespace-nowrap rounded-md bg-amber-950 p-2 text-center text-white shadow-lg flex',
           !isDropdown && 'opacity-0 pointer-events-none'
         )}
       >
@@ -85,4 +89,4 @@ const NavItem: React.FC<NavItemProps> = ({ name, items, isDropdown, handleClick,
   );
 };
 
-export default NavItem;
+export default NavVerticalItem;

@@ -113,7 +113,10 @@ export default function Discover() {
       <div className="event mb-[16px] rounded-lg border border-solid  border-gray-800 py-[10px]">
         <div className="headEvent flex px-[32px] pb-2">
           <h2 className="flex-1 text-[24px] text-orange-400">Event</h2>
-          <Button className="bg-orange-400 uppercase text-black" onClick={handleEventView}>
+          <Button
+            className="bg-orange-400 uppercase text-black max-sm:text-[10px] sm:text-[12px] md:text-[16px]"
+            onClick={handleEventView}
+          >
             {!eventView ? 'View all' : 'View Less'}
           </Button>
         </div>
@@ -124,13 +127,19 @@ export default function Discover() {
               {i < 10 || (i >= 10 && eventView === true) ? (
                 <button
                   key={i}
-                  className="mb-[10px] flex w-full items-center space-x-8 px-[32px] py-[16px] hover:bg-[#190D03]"
+                  className="mb-[10px] flex w-full items-center px-[32px] py-[16px] hover:bg-[#190D03] max-sm:space-x-4 sm:space-x-8"
                 >
-                  <h2 className="text-[20px]">{item.title}</h2>
-                  <p className="text-[16px]">{item.name}</p>
-                  <div className="rounded-2xl bg-gray-600 px-2 py-1">{game[item.game]}</div>
-                  <div className="rounded-2xl bg-gray-600 px-2 py-1">{platform[item.platform]}</div>
-                  <div className="rounded-2xl bg-gray-600 px-2 py-1">{region[item.region]}</div>
+                  <h2 className="max-sm:text-[12px] sm:text-[16px] md:text-[20px]">{item.title}</h2>
+                  <p className="max-sm:text-[10px] sm:text-[12px] md:text-[16px]">{item.name}</p>
+                  <div className="rounded-2xl bg-gray-600 px-2 py-1 max-sm:text-[12px] sm:text-[16px] md:text-[20px]">
+                    {game[item.game]}
+                  </div>
+                  <div className="rounded-2xl bg-gray-600 px-2 py-1 max-sm:text-[12px] sm:text-[16px] md:text-[20px]">
+                    {platform[item.platform]}
+                  </div>
+                  <div className="rounded-2xl bg-gray-600 px-2 py-1 max-sm:text-[12px] sm:text-[16px] md:text-[20px]">
+                    {region[item.region]}
+                  </div>
                 </button>
               ) : (
                 <></>
@@ -143,7 +152,10 @@ export default function Discover() {
       <div className="team rounded-lg border border-solid border-gray-800  py-[10px]">
         <div className="headEvent flex px-[32px] pb-2">
           <h2 className="flex-1 text-[24px] text-orange-400">Team</h2>
-          <Button className="bg-orange-400 uppercase text-black" onClick={handleTeamView}>
+          <Button
+            className="bg-orange-400 uppercase text-black max-sm:text-[10px] sm:text-[12px] md:text-[16px]"
+            onClick={handleTeamView}
+          >
             {!teamView ? 'View all' : 'View Less'}
           </Button>
         </div>
@@ -156,7 +168,7 @@ export default function Discover() {
                   key={i}
                   className="mb-[10px] flex w-full items-center space-x-8 px-[32px] py-[16px] hover:bg-[#190D03]"
                 >
-                  <h2 className="text-[20px]">{item.title}</h2>
+                  <h2 className="max-sm:text-[12px] sm:text-[16px] md:text-[20px]">{item.title}</h2>
                 </button>
               ) : (
                 <></>
@@ -169,7 +181,10 @@ export default function Discover() {
       <div className="organizer rounded-lg border border-solid border-gray-800  py-[10px]">
         <div className="headEvent flex px-[32px] pb-2">
           <h2 className="flex-1 text-[24px] text-orange-400">Organizer</h2>
-          <Button className="bg-orange-400 uppercase text-black" onClick={handleOrgView}>
+          <Button
+            className="bg-orange-400 uppercase text-black max-sm:text-[10px] sm:text-[12px] md:text-[16px]"
+            onClick={handleOrgView}
+          >
             {!orgView ? 'View all' : 'View Less'}
           </Button>
         </div>
@@ -182,7 +197,7 @@ export default function Discover() {
                   key={i}
                   className="mb-[10px] flex w-full items-center space-x-8 px-[32px] py-[16px] hover:bg-[#190D03]"
                 >
-                  <h2 className="text-[20px]">{item.title}</h2>
+                  <h2 className="max-sm:text-[12px] sm:text-[16px] md:text-[20px]">{item.title}</h2>
                 </button>
               ) : (
                 <></>
@@ -195,7 +210,10 @@ export default function Discover() {
       <div className="player rounded-lg border border-solid border-gray-800  py-[10px]">
         <div className="headEvent flex px-[32px] pb-2">
           <h2 className="flex-1 text-[24px] text-orange-400">Player</h2>
-          <Button className="bg-orange-400 uppercase text-black" onClick={handlePlayerView}>
+          <Button
+            className="bg-orange-400 uppercase text-black max-sm:text-[10px] sm:text-[12px] md:text-[16px]"
+            onClick={handlePlayerView}
+          >
             {!playerView ? 'View all' : 'View Less'}
           </Button>
         </div>
@@ -208,7 +226,7 @@ export default function Discover() {
                   key={i}
                   className="mb-[10px] flex w-full items-center space-x-8 px-[32px] py-[16px] hover:bg-[#190D03]"
                 >
-                  <h2 className="text-[20px]">{item.title}</h2>
+                  <h2 className="max-sm:text-[12px] sm:text-[16px] md:text-[20px]">{item.title}</h2>
                 </button>
               ) : (
                 <></>

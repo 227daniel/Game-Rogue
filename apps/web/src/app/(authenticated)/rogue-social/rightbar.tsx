@@ -19,7 +19,7 @@ export default function RightBar() {
           startContent={<SearchIcon size={18} color="white" />}
         />
         <hr className="border-[1.5px] border-orange-500" />
-        <h6 className="px-1 text-center text-[20px]">
+        <h6 className="px-1 text-center max-sm:text-[12px] md:text-[16px] xl:text-[20px]">
           There are no current match-chats available for you.
         </h6>
         <br />

@@ -54,7 +54,7 @@ type PropsType = {
   changeTab: (index: number) => void;
 };
 
-export default function navBar(props: PropsType) {
+export default function NavBar(props: PropsType) {
   const [tabState, setTabState] = React.useState(0);
   const { changeTab } = props;
 
@@ -66,54 +66,64 @@ export default function navBar(props: PropsType) {
     [changeTab]
   );
   return (
-    <div>
-      {rogueTab.map((item, i) =>
-        tabState === i ? (
-          <Button
-            key={i}
-            variant="ghost"
-            style={{
-              color: '#FFFFFFB3',
-              width: '100%',
-              display: 'block',
-              textAlign: 'left',
-              fontSize: '24px',
-              lineHeight: '30px',
-              minHeight: '72px',
-              padding: '9px 40px',
-              borderRight: 'solid orange',
-              borderRadius: 0,
-            }}
-            onClick={handleClickTabMenu(i)}
-          >
-            <div className="flex text-orange-400">
-              {item.selectedIcon}&nbsp;&nbsp;
-              {item.label}
-            </div>
-          </Button>
-        ) : (
-          <Button
-            key={i}
-            variant="ghost"
-            style={{
-              color: '#FFFFFFB3',
-              width: '100%',
-              display: 'block',
-              textAlign: 'left',
-              fontSize: '24px',
-              lineHeight: '30px',
-              minHeight: '72px',
-              padding: '9px 40px',
-            }}
-            onClick={handleClickTabMenu(i)}
-          >
-            <div className="flex">
-              {item.icon}&nbsp;&nbsp;
-              {item.label}
-            </div>
-          </Button>
-        )
-      )}
-    </div>
+    <>
+      <div className="max-sm:hidden sm:hidden md:hidden lg:block">
+        {rogueTab.map((item, i) =>
+          tabState === i ? (
+            <Button
+              key={i}
+              variant="ghost"
+              className="border-r-solid block min-h-[72px] w-full rounded-none border-r-orange-400 px-[20px] py-[9px] text-left text-[#FFFFFFB3] lg:text-[16px] 2xl:text-[20px]"
+              onClick={handleClickTabMenu(i)}
+            >
+              <div className="flex text-orange-400">
+                {item.selectedIcon}&nbsp;
+                <span className="">{item.label}</span>
+              </div>
+            </Button>
+          ) : (
+            <Button
+              key={i}
+              variant="ghost"
+              className="block min-h-[72px] w-full  px-[20px] py-[9px] text-left text-[#FFFFFFB3] xl:text-[16px] 2xl:text-[20px]"
+              onClick={handleClickTabMenu(i)}
+            >
+              <div className="flex">
+                {item.icon}&nbsp;
+                <span className="">{item.label}</span>
+              </div>
+            </Button>
+          )
+        )}
+      </div>
+      <div className=" border-b border-b-gray-400 py-3 text-center max-sm:block sm:block md:block lg:hidden">
+        <div className="grid grid-cols-8">
+          {rogueTab.map((item, i) => (
+            <span key={i} className="col-span-1">
+              {tabState === i ? (
+                <Button
+                  isIconOnly
+                  variant="bordered"
+                  className="border border-solid border-gray-400 text-left text-[#FFFFFFB3]"
+                  onClick={handleClickTabMenu(i)}
+                >
+                  <div className="text-orange-400">{item.selectedIcon}</div>
+                </Button>
+              ) : (
+                <Button
+                  isIconOnly
+                  key={i}
+                  variant="bordered"
+                  className="border border-solid border-gray-400 text-left text-[#FFFFFFB3] "
+                  onClick={handleClickTabMenu(i)}
+                >
+                  <div className="">{item.icon}</div>
+                </Button>
+              )}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

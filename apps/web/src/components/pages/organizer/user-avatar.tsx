@@ -1,6 +1,5 @@
 import { cn } from '@ui/lib/utils';
 import Image from 'next/image';
-import { UserIcon } from '@/components/icons/icons';
 
 type UserAvatarProps = {
   active: boolean;
@@ -16,7 +15,7 @@ export default function UserAvatar({ active, image, isUser }: UserAvatarProps): 
         isUser ? 'bg-[#757575]' : 'bg-white'
       )}
     >
-      {!image && <UserIcon className="size-[4.5rem] text-[#121212]" />}
+      {/* {!image && <UserIcon className="size-[4.5rem] text-[#121212]" />} */}
       {image && (
         <Image
           src={image}

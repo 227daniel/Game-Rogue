@@ -1,6 +1,5 @@
 'use client';
-import React, { ReactNode, useCallback, useState } from 'react';
-import Messages from '../../../components/message/Messages';
+import React, { useCallback, useState } from 'react';
 import Discover from './discover';
 import Featured from './featured';
 import Footer from './footer';
@@ -9,7 +8,7 @@ import Leaderboard from './leaderboard';
 import NavBar from './navbar';
 import Notifications from './notifications';
 
-export default function App({ children }: { children: ReactNode }): JSX.Element {
+export default function App(): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
   const handleChangeTab = useCallback((index: number) => {
     setTabIndex(index);
@@ -29,14 +28,19 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
     <>
       <br />
       <br />
-      <Messages />
+      {/* <Messages /> */}
+      <div className="lg:hidden">
+        <NavBar changeTab={(index) => handleChangeTab(index)} />
+      </div>
       <div className="flex flex-col">
         <div className="flex w-full flex-col">
           <div className="grid grid-cols-12">
-            <div className="col-span-2 bg-gradient-to-b from-black to-[rgb(40,22,12)]">
+            <div className="bg-gradient-to-b from-black to-[rgb(40,22,12)] max-sm:hidden sm:hidden md:hidden lg:col-span-2 lg:block">
               <NavBar changeTab={(index) => handleChangeTab(index)} />
             </div>
-            <div className="col-span-10">{MainComponents[tabIndex].com}</div>
+            <div className="max-sm:col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-10">
+              {MainComponents[tabIndex].com}
+            </div>
           </div>
           <div className="grid grid-cols-12">
             <div className="col-span-12">
