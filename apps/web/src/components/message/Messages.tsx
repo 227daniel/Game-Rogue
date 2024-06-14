@@ -21,7 +21,7 @@ const Messages = () => {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 z-50 min-w-[416px]">
+    <div className="fixed bottom-0 right-0 z-50 max-sm:min-w-[350px] sm:min-w-[416px]">
       <div className="bg-foreground flex cursor-pointer items-center justify-between gap-2 rounded-b-none rounded-t-[5px] px-4 py-3 text-xl">
         <div
           className="absolute left-0 top-0 z-0 size-full bg-transparent"

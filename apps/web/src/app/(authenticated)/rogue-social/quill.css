@@ -357,10 +357,10 @@ input#search::placeholder {
   transform: translateY(100%)
 }
 
-.tweet-textedit .ql-toolbar button {
+/* .tweet-textedit .ql-toolbar button {
   width: 30px!important;
   height: 30px!important
-}
+} */
 
 .tweet-textedit .ql-header {
   height: 36px
@@ -372,11 +372,32 @@ input#search::placeholder {
   align-items: center;
   height: 30px
 }
-
-.tweet-textedit .ql-toolbar svg {
+@media only screen and (max-width: 640px) {
+  /* For tablets: */
+  .tweet-textedit .ql-toolbar svg {
+    width: 15px!important;
+    height: 15px!important
+  }
+  .tweet-textedit .ql-toolbar button {
+    width: 15px!important;
+    height: 15px!important
+  }
+}
+@media only screen and (min-width: 641px) {
+  /* For tablets: */
+  .tweet-textedit .ql-toolbar svg {
+    width: 30px!important;
+    height: 30px!important
+  }
+  .tweet-textedit .ql-toolbar button {
+    width: 30px!important;
+    height: 30px!important
+  }
+}
+/* .tweet-textedit .ql-toolbar svg {
   width: 30px!important;
   height: 30px!important
-}
+} */
 
 .tweet-textedit .ql-container {
   border: none!important;

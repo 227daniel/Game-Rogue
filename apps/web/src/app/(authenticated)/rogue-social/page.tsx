@@ -7,6 +7,7 @@ import Home from './home';
 import Leaderboard from './leaderboard';
 import NavBar from './navbar';
 import Notifications from './notifications';
+import Messages from '@/components/message/Messages';
 
 export default function App(): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
@@ -28,7 +29,7 @@ export default function App(): JSX.Element {
     <>
       <br />
       <br />
-      {/* <Messages /> */}
+      <Messages />
       <div className="lg:hidden">
         <NavBar changeTab={(index) => handleChangeTab(index)} />
       </div>

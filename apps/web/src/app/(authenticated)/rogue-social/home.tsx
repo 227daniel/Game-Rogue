@@ -314,7 +314,8 @@ export default function Home() {
                     />
                     <div className="absolute bottom-4 right-6">
                       <Button
-                        className="bg-foreground h-10 rounded-2xl text-white"
+                        isIconOnly
+                        className="bg-foreground rounded-2xl text-[12px] text-white"
                         onClick={onPost}
                       >
                         Post
